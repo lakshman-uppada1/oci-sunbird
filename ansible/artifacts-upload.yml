@@ -3,13 +3,13 @@
   become: yes
   vars_files:
     - "{{inventory_dir}}/secrets.yml"
-  tasks:
-    - name: upload artifact to oci oss
-      include_role:
-        name: oci-cloud-storage
-        tasks_from: upload.yml
-      vars:
-        local_file_or_folder_path: "{{ artifact_path }}"
-        oss_bucket_name: "{{ cloud_storage_artifacts_bucketname }}"
-        oss_path: "{{ artifact }}"
-      when: cloud_service_provider == "oci"
+  tasks: null
+- name: upload artifact to oci oss
+  include_role:
+    name: oci-cloud-storage
+    tasks_from: upload.yml
+  vars:
+    local_file_or_folder_path: "{{ artifact_path }}"
+    oss_bucket_name: "{{ cloud_storage_artifacts_bucketname }}"
+    oss_path: "{{ artifact }}"
+  when: cloud_service_provider == "oci"
